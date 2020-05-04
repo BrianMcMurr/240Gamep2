@@ -1,6 +1,6 @@
 <?php
-require_once 'files.php';
-require_once 'config.php';
+require_once '../misc/files.php';
+require_once '../misc/config.php';
 echo "<pre>";
 extract($_POST);
 session_start(); 
