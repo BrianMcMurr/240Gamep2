@@ -1,6 +1,6 @@
 <?php
-require_once 'files.php';
-require_once 'config.php';
+require_once '../misc/files.php';
+require_once '../misc/config.php';
 echo "<pre>";
  /*names of two input: username and password*/
 /*foreach($_POST as $key => $val){
@@ -18,7 +18,7 @@ if($re===1){
 	/*Redirect browser*/
 	session_start(); 
     $_SESSION['$username'] = $username;
-	header("Location: menu.php/");
+	header("Location: ../Homepage/menu.php/");
 
 }else{
 	echo "Invaild username or password";

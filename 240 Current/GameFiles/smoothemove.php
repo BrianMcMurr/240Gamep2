@@ -15,13 +15,29 @@
 		function makeSound(selectedSong) {	
 			var sound;	
 			switch(selectedSong) {
-				case("shiningOnMyEx"):
-				sound = new Audio('bbno_-_Shining_On_My_Ex_ft_Yung_Gravy_Hit64.com.mp3');
-				break;
+				case("EverytimeWeTouch"):
+					sound = new Audio('MusicPic/EverytimeWeTouch.mp3');
+					break;
+				case("HannaMontana"):
+					sound = new Audio('MusicPic/HannahMontana.mp3');
+					break;
+				case("In_the_Jungle"):
+					sound = new Audio('MusicPic/In_the_Jungle.mp3');
+					break;
+				case("Revenge"):
+					sound = new Audio('MusicPic/Revenge.mp3');
+					break;
+				case("TNT"):
+					sound = new Audio('MusicPic/TNT.mp3');
+					break;
+				case("WhatMakesYouBeautiful"):
+					sound = new Audio('MusicPic/WhatMakesYouBeautiful.mp3');
+					break;
 				default:
-				sound = new Audio('bbno_-_Shining_On_My_Ex_ft_Yung_Gravy_Hit64.com.mp3');
-				break;
+					alert("Song not Found");
+					break;
 			}
+
 			sound.id = "playingSong";
 			document.body.appendChild(sound);
 			sound.play();
