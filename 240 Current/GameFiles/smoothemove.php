@@ -19,7 +19,7 @@
 					//changeDiffuclty
 					break;
 				case("HannaMontana"):
-					//changediffuclty
+					//changeDiffuclty
 					break;
 				case("In_the_Jungle"):
 					//changeDiffuclty
