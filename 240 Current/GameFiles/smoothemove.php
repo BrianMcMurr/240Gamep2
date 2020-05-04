@@ -4,34 +4,34 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="gameBackground.css">
 	<link rel="stylesheet" type="text/css" href="fallingBlocks.css">
-	<button id= "startGameButton" type="button" onclick="start(1000); makeSound();document.getElementById('startGameButton').remove();">Click me to start game</button>
+	<button id= "startGameButton" type="button" onclick="start(1000); makeSound('<? $_POST['gameType']?>');document.getElementById('startGameButton').remove();">Click me to start game</button>
 	<div id = "background" class="gameBackground"></div>
 </head>
 <body>
 	<p>gameType <?php echo $_POST["gameType"];?></p>
 	<script src="randomEquation.js"></script>
 	<script type="text/javascript">
-	   //var selectedSong = '<%= Session["selectedSong"] %>';// rate of block creation, lower = more blocks
+	   //var selectedSong = '<%= Session["selectedSong"] %>';// rate of block creation, lower = more blocks\
 		function makeSound(selectedSong) {	
-			var sound;	
+			var sound = new Audio('MusicPic/' + selectedSong + '.mp3');
 			switch(selectedSong) {
 				case("EverytimeWeTouch"):
-					sound = new Audio('MusicPic/EverytimeWeTouch.mp3');
+					//changeDiffuclty
 					break;
 				case("HannaMontana"):
-					sound = new Audio('MusicPic/HannahMontana.mp3');
+					//changediffuclty
 					break;
 				case("In_the_Jungle"):
-					sound = new Audio('MusicPic/In_the_Jungle.mp3');
+					//changeDiffuclty
 					break;
 				case("Revenge"):
-					sound = new Audio('MusicPic/Revenge.mp3');
+					//changeDiffuclty
 					break;
 				case("TNT"):
-					sound = new Audio('MusicPic/TNT.mp3');
+					//changeDiffuclty
 					break;
 				case("WhatMakesYouBeautiful"):
-					sound = new Audio('MusicPic/WhatMakesYouBeautiful.mp3');
+					//changeDiffuclty
 					break;
 				default:
 					alert("Song not Found");
