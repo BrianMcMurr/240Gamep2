@@ -12,7 +12,7 @@ if(isset($_GET['songTitle'])){
 
 ?>
 
-<audio src=\MusicPic\<?php echo $song2;?> autoplay="true">
+<audio src=...\MusicPic\<?php echo $song2;?> autoplay="true">
 <div style="border: 1px solid black ; padding: 1px ;">
 Sorry, your browser does not support the <audio> tag.
 </div>
