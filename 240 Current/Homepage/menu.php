@@ -44,11 +44,11 @@ function getsubscore($username){
 		
 		<!-- change runner.php to actaulyl redierct page -->
 			
-			<a href="runner.php">
+			<a href="../../GameFiles/AddOrSubScreen/ADDorSUBpage.html">
 			<input type="image" id="sart" alt="start" src="Start.png" height="120" width="160">
 			</a>
 			
-			<a href="Login.php">
+			<a href="../../Login/Login.php">
 			<input type="image" id="logout" alt="logout" src="quit.png" height="100" width="150">	
 			</a>
 		</fieldset>
