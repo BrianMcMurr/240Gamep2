@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- -->
+
 <head>
 	<link rel="stylesheet" type="text/css" href="gameBackground.css">
 	<link rel="stylesheet" type="text/css" href="fallingBlocks.css">

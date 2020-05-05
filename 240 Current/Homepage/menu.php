@@ -43,13 +43,12 @@ function getsubscore($username){
 		<legend>Welcome To Music Math</legend>
 		
 		<!-- change runner.php to actaulyl redierct page -->
-			
-			<a href="../../GameFiles/AddOrSubScreen/ADDorSUBpage.html">
-			<input type="image" id="sart" alt="start" src="Start.png" height="120" width="160">
+			<a href="../../PreGame/Song Select and play music/New ADD or SUb/ADD or SUB page.html">
+			<input type="image" id="start" alt="start" src="../../Homepage/Start.png" height="126" width="326">
 			</a>
 			
 			<a href="../../Login/Login.php">
-			<input type="image" id="logout" alt="logout" src="quit.png" height="100" width="150">	
+			<input type="image" id="logout" alt="logout" src="../../Homepage/quit.png" height="126" width="326">	
 			</a>
 		</fieldset>
 	</body>

@@ -1,2 +1,4 @@
 enc $2y$10$uxQ.ytr13OAGAzG34uVjWuHicgnNnCXPTkl5hrxNKt87MrZretqfG class 0 0
 Brian $2y$10$CsgxReCmN3zESj3XhyRqNeHdTrdQUtNOxHw9Djxn2qmm8796BhCDa class 0 0
+
+alex $2y$10$sLWmB3pHdRT/8NzcVqKLQOq0C1Nd8NNaPp5hfjtHkPJvI2bfK3QUa cs 0 0
