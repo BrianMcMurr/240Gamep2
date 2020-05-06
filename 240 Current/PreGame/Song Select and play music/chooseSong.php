@@ -18,18 +18,23 @@
 			
 		<a href="page.php?value_key=some_value">Link</a>-->
 			<script>
-				console.log(document.getElementById('addsub').value);
+				//console.log(document.getElementById('gameType').value);
 			</script>
 
 			<form action="../../GameFiles/smoothemove.php" id="songSelect" method="post">
+				
+				<p><?php 
+					//echo $songs[0];
+					foreach (glob("../../MusicPic/*.mp3") as $song) {
+						$splitSong = explode("MusicPic/",$song);
+						$songName = explode(".mp3",$splitSong[1]);
+						//echo $splitImg[0]. "<br></br>";
+						//$img = $splitSong[0];
+						echo "<img onclick= setSong('$songName[0]') id = '$songName[0]' alt = 'start' src = '../../MusicPic/$songName[0].jpg' height = '200' width = '200'>";	
+					}
+					?></p>
 				<input type = "hidden" id = "gameType" name ="gameType"value = "<?php echo $_POST['gameType'];?>">
 				<input type="hidden" id = "song" name="song" value="">
-			<img onclick="setSong('EverytimeWeTouch')" id="sart" alt="start" src="../../MusicPic/EverytimeWeTouch.jpg" height="200" width="200">
-            <img onclick="setSong('HannahMontana')" id="sart" alt="start" src="../../MusicPic/HannahMontana.jpg" height="200" width="200">
-            <img onclick="setSong('In_The_Jungle')" id="sart" alt="start" src="../../MusicPic/In_the_Jungle.jpg" height="200" width="200">
-			<img onclick="setSong('Revenge')" id="sart" alt="start" src="../../MusicPic/Revenge.jpg" height="200" width="200">
-			<img onclick="setSong('TNT')" id="sart" alt="start" src="../../MusicPic/TNT.jpg" height="200" width="200">
-			<img onclick="setSong('WhatMakesYouBeautiful')" id="sart" alt="start" src="../../MusicPic/WhatMakesYouBeautiful.jpg" height="200" width="200">
 			</form>
 			<a href="../../Login/Login.php">
 			<input type="image" id="logout" alt="logout" src="../../MusicPic/quit.png" height="100" width="150">	

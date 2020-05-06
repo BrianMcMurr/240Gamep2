@@ -13,7 +13,7 @@
 	<script type="text/javascript">
 	   //var selectedSong = '<%= Session["selectedSong"] %>';// rate of block creation, lower = more blocks\
 		function makeSound(selectedSong, selectedGameType) {
-			var sound = new Audio('../MusicPic/' + selectedSong + '.mp3');
+			var sound = new Audio('../songs/' + selectedSong + '.mp3');
 			switch(selectedSong) {
 				case("EverytimeWeTouch"):
 					//changeDiffuclty
@@ -121,6 +121,7 @@
 			}
 			e.target.remove();
 			if(color == "blue") {
+				explosion();
 				missedPoints += 10;
 			}
 			updateScore();// updates score counter on webpage
@@ -135,6 +136,12 @@
 				stop();//stops the game 
 				alert("sorry, You lose! \nYour Score is " + currentScore);//score card of player stats
 			}
+		}
+		function explosion() {
+			//randomExplosion = randomInt()
+			var explode = new Audio("../soundEffects/explosionSound.mp3");
+			explode.addEventListener("ended",explode.remove());
+			explode.play();
 		}
 
 	</script>
