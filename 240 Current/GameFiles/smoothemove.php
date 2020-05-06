@@ -13,7 +13,7 @@
 	<script type="text/javascript">
 	   //var selectedSong = '<%= Session["selectedSong"] %>';// rate of block creation, lower = more blocks\
 		function makeSound(selectedSong, selectedGameType) {
-			var sound = new Audio('../PreGame/MusicPic/' + selectedSong + '.mp3');
+			var sound = new Audio('../MusicPic/' + selectedSong + '.mp3');
 			switch(selectedSong) {
 				case("EverytimeWeTouch"):
 					//changeDiffuclty

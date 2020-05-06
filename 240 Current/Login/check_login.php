@@ -18,7 +18,7 @@ if($re===1){
 	/*Redirect browser*/
 	session_start(); 
     $_SESSION['$username'] = $username;
-	header("Location: ../Homepage/menu.php/");
+	header("Location: ../Homepage/menu.php");
 
 }else{
 	echo "Invaild username or password";
