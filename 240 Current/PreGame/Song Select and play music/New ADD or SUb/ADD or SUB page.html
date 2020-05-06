@@ -7,7 +7,7 @@
 	<body>
 		<style type="text/css">
 					body{
-						font-family: Monaco; //change everything after sans to change font
+						font-family: Monaco; 
 					}    
 			</style>
 			<body>
@@ -15,6 +15,7 @@
 			
 				<legend>Please Pick A Game Mode</legend>
 				
+<<<<<<< Updated upstream
 				<! change runner.php to actaulyl redierct page -->
 					
 					<a href="chooseSong.html">
@@ -26,6 +27,21 @@
 					height="120" width="200">
 
 					</a>	
+=======
+				<!-- change runner.php to actaulyl redierct page -->
+					<form action="../../Song Select and play music/chooseSong.php" id="songSelect" method = "post">
+					<input type="hidden" id="gameValue" name="gameType" value="">
+					<img onclick="setGameType('addition')" id="add" alt="sub" src="add.png" height = 200 width = 200>
+					</form>
+					<img type="image" onclick="setGameType('subtraction')" id="sub" alt="sub" src="sub.png" height = 200 width = 200>
+				</a>	
+>>>>>>> Stashed changes
 				</fieldset>
+				<script>
+					function setGameType(gameType) {
+						document.getElementById('gameValue').value = gameType;
+						document.getElementById('songSelect').submit();
+					}
+				</script>
 	</body>
 </html>

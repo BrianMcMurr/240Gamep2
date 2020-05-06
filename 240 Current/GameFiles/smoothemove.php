@@ -4,16 +4,16 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="gameBackground.css">
 	<link rel="stylesheet" type="text/css" href="fallingBlocks.css">
-	<button id= "startGameButton" type="button" onclick="start(1000); makeSound('<? $_POST['gameType']?>');document.getElementById('startGameButton').remove();">Click me to start game</button>
+	<button id= "startGameButton" type="button" onclick="start(1000); makeSound('<?php echo $_POST['song']?>','<?php echo $_POST['gameType'] ?>');document.getElementById('startGameButton').remove();">Click me to start game</button>
 	<div id = "background" class="gameBackground"></div>
 </head>
 <body>
-	<p>gameType <?php echo $_POST["gameType"];?></p>
+<!--	<p>gameType <?php echo $_POST["gameType"];?></p> -->
 	<script src="randomEquation.js"></script>
 	<script type="text/javascript">
 	   //var selectedSong = '<%= Session["selectedSong"] %>';// rate of block creation, lower = more blocks\
-		function makeSound(selectedSong) {	
-			var sound = new Audio('MusicPic/' + selectedSong + '.mp3');
+		function makeSound(selectedSong, selectedGameType) {
+			var sound = new Audio('../PreGame/MusicPic/' + selectedSong + '.mp3');
 			switch(selectedSong) {
 				case("EverytimeWeTouch"):
 					//changeDiffuclty
@@ -63,7 +63,6 @@
 	//	var listOfMissedEq = new Array();
 	//	start(blockFrequency);
 		updateScore();
-		console.log(document.getElementById("").duration);
 		function updateScore() {
 			document.getElementById("background").innerHTML = "Your current score is " + currentScore + "\n You've missed " + missedPoints + " points so far";
 		}
