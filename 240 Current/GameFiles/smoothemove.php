@@ -1,8 +1,3 @@
-<?php 
-require '../Misc/update_score.php';
-require '../Misc/config.'
-?>
-
 <!DOCTYPE html>
 <html>
 <!-- -->
@@ -200,11 +195,10 @@ require '../Misc/config.'
 					updateScore();
 					return true;
 				}
-				else{
+				else {
 					return false;
 				}
 			}
-		}
 
 
 	</script>
