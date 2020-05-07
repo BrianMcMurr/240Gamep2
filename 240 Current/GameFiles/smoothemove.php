@@ -143,21 +143,12 @@
 			explode.addEventListener("ended",explode.remove());
 			explode.play();		
 		}
-		function genFile(options) {
-			Math.floor(math.random()*options.length()) + 3;
-		}
 	</script>
-	<p><?php echo explosionOptions();?></p>
 	
 	<?php 
 	function explosionOptions() {
 		echo json_encode(scandir("../soundEffects/Explosions"));
 	}
-		function randExplosion() {
-			$explosions = scandir("../soundEffects/Explosions");
-			echo $explosions[mt_rand(2,count($explosions))];
-			//echo $explosions["<script type ='text/javascript'>genFile($explosions)</script>"];
-		}
 	?>
 	<textarea id = "userGuess" cols="40" rows="5" onkeypress="checkEntryValue(event)"></textarea>
 	<script type="text/javascript">
