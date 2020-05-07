@@ -1,9 +1,14 @@
+<?php 
+require '../Misc/update_score.php';
+require '../Misc/config.'
+?>
+
 <!DOCTYPE html>
 <html>
 <!-- -->
 <head>
 	<link rel="stylesheet" type="text/css" href="gameBackground.css">
-	<link rel="stylesheet" type="text/css" href="fallingBlocks.css">
+	<link rel="stylesheet" type="text/css" href="fallingBlocks.css?v=1">
 	<button id= "startGameButton" type="button" onclick="start(1000); makeSound('<?php echo $_POST['song']?>','<?php echo $_POST['gameType'] ?>');document.getElementById('startGameButton').remove();">Click me to start game</button>
 	<div id = "background" class="gameBackground"></div>
 </head>
@@ -111,9 +116,10 @@
 			case (3) : block.setAttribute("style","animation-name: blockFall3"); break;
 			default : block.setAttribute("style","animation-name: blockFall4"); break;
 			}
-			block.setAttribute("color", "blue");//creates color value of block
+			block.setAttribute("color","blue");//creates color value of block
 			document.body.appendChild(block);
-			block.innerHTML = equation;
+			//block.setAttribute("style","background-color: turquoise");
+			block.innerHTML = equation.fontsize(6);
 
 		}
 		function animationEndListener(e) {//when event triggers, removes block from webpage and removes block from blockList
@@ -177,31 +183,18 @@
 			num1 = parseInt(asArray[0]);
 			symbol = asArray[1];
 			num2 = parseInt(asArray[2]);
+			result;
 			if (symbol == "+"){//if addition, then solves as additon
 				result = num1 + num2;
+			} else {
+				result = num1 - num2;
+			}
 				if(result == parseInt(guess)) {//if user guess is correct then deletes the block and increments and updates score
 					elem = document.getElementById(block.id);
 					animationName = elem.getAttribute("style");
 					console.log("animation name: " + animationName);
-					elem.setAttribute("style", "background-color: green;" + animationName);
-					elem.setAttribute("color", "green");//saves color attribute of block as green if correct
-					blockList.splice(iterator, 1); 
-					currentScore += 10;
-					updateScore();
-					return true;
-				}
-				else{
-					return false;
-				}
-			}
-			if (symbol == "-"){
-				result = num1 - num2;
-				if(result == parseInt(guess)) {
-					elem = document.getElementById(block.id);
-					animationName = elem.getAttribute("style");
-					console.log("animation name: " + animationName);
-					elem.setAttribute("style", "background-color: green;" + animationName);
-					elem.setAttribute("color", "green");//saves color attribute of block as green if correct
+					elem.setAttribute("style", "background-color: orchid;"+ animationName);
+					elem.setAttribute("color", "orchid");//saves color attribute of block as green if correct
 					blockList.splice(iterator, 1); 
 					currentScore += 10;
 					updateScore();
