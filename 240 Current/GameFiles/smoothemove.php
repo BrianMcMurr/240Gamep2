@@ -13,7 +13,7 @@
 	<script type="text/javascript">
 	   //var selectedSong = '<%= Session["selectedSong"] %>';// rate of block creation, lower = more blocks\
 		function makeSound(selectedSong, selectedGameType) {
-			var sound = new Audio('../songs/' + selectedSong + '.mp3');
+			var sound = new Audio('../MusicPic/' + selectedSong + '.mp3');
 			switch(selectedSong) {
 				case("EverytimeWeTouch"):
 					//changeDiffuclty
@@ -81,7 +81,6 @@
 		//Shoot blocks with random equations in random collumns/files.
 		function blockCannon() {
 			++counter;
-			console.log(counter);	
 			var currentBlockId = "block" + counter;
 			/*
 			var wunOrToo = ( Math.floor(Math.random() * Math.floor(2)) )+1;
@@ -139,12 +138,27 @@
 		}
 		function explosion() {
 			//randomExplosion = randomInt()
-			var explode = new Audio("../soundEffects/explosionSound.mp3");
+			var explosions = <?php echo explosionOptions();?>;
+			var explode = new Audio("../soundEffects/Explosions/" + explosions[Math.floor(Math.random()* (explosions.length - 2) + 2 )]);
 			explode.addEventListener("ended",explode.remove());
-			explode.play();
+			explode.play();		
 		}
-
+		function genFile(options) {
+			Math.floor(math.random()*options.length()) + 3;
+		}
 	</script>
+	<p><?php echo explosionOptions();?></p>
+	
+	<?php 
+	function explosionOptions() {
+		echo json_encode(scandir("../soundEffects/Explosions"));
+	}
+		function randExplosion() {
+			$explosions = scandir("../soundEffects/Explosions");
+			echo $explosions[mt_rand(2,count($explosions))];
+			//echo $explosions["<script type ='text/javascript'>genFile($explosions)</script>"];
+		}
+	?>
 	<textarea id = "userGuess" cols="40" rows="5" onkeypress="checkEntryValue(event)"></textarea>
 	<script type="text/javascript">
 		var guess = "";
