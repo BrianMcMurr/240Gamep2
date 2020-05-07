@@ -19,7 +19,7 @@
 			<script>
 				//console.log(document.getElementById('gameType').value);
 			</script>
-
+<p><?php echo $_POST['gameType'] ?></p>
 			<form action="../../GameFiles/smoothemove.php" id="songSelect" method="post">
 				
 				<p><?php 

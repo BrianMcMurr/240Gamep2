@@ -8,7 +8,6 @@
 	<div id = "background" class="gameBackground"></div>
 </head>
 <body>
-<!--	<p>gameType <?php echo $_POST["gameType"];?></p> -->
 	<script src="randomEquation.js"></script>
 	<script type="text/javascript">
 	   //var selectedSong = '<%= Session["selectedSong"] %>';// rate of block creation, lower = more blocks\
@@ -88,9 +87,9 @@
 			else var randomEquation = generateAddition();
 			*/  
 			var randomEquation;
-			var gameType = '<?php $_POST['gameType'] ?>' == "addition"
+			var gameType = '<?php echo $_POST['gameType'] ?>';
 			console.log(gameType);
-			if(gameType){
+			if(gameType == 'addition'){
 				randomEquation = generateAddition();
 			} else {
 				randomEquation = generateSubtraction();
