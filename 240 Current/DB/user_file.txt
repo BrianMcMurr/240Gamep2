@@ -1,4 +1,3 @@
 enc $2y$10$uxQ.ytr13OAGAzG34uVjWuHicgnNnCXPTkl5hrxNKt87MrZretqfG class 0 0
-Brian $2y$10$CsgxReCmN3zESj3XhyRqNeHdTrdQUtNOxHw9Djxn2qmm8796BhCDa class 0 0
-
-andrew $2y$10$eCXRRP.9qjj2/Tm82jL5mu7spUJhqa6bj.BpkMZqxvO4M2V3M/CKO 240 0 0
+Brian $2y$10$CsgxReCmN3zESj3XhyRqNeHdTrdQUtNOxHw9Djxn2qmm8796BhCDa class 1 0
+andrew $2y$10$eCXRRP.9qjj2/Tm82jL5mu7spUJhqa6bj.BpkMZqxvO4M2V3M/CKO 240 1 0

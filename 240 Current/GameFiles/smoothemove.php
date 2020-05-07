@@ -18,7 +18,7 @@
 				case("EverytimeWeTouch"):
 					//changeDiffuclty
 					break;
-				case("HannaMontana"):
+				case("HannahMontana"):
 					//changeDiffuclty
 					break;
 				case("In_the_Jungle"):
@@ -87,7 +87,14 @@
 			if (wunOrToo == 1) randomEquation = generateSubtraction();
 			else var randomEquation = generateAddition();
 			*/  
-			var randomEquation = generateAddition();
+			var randomEquation;
+			var gameType = '<?php $_POST['gameType'] ?>' == "addition"
+			console.log(gameType);
+			if(gameType){
+				randomEquation = generateAddition();
+			} else {
+				randomEquation = generateSubtraction();
+			}
 			makeBlock(currentBlockId, randomEquation);
 			var newBlock = {id: currentBlockId, equation: randomEquation};
 			blockList.push(newBlock);

@@ -22,7 +22,6 @@
 		//override
 		$myfile = fopen($file, "w") or die("Failed to create files");
 		fwrite($myfile, $data) or die("Could not write to file");
-
 		fclose($myfile);
 	}
 
@@ -33,13 +32,16 @@
 		$myfile = fopen($filename, "r") or die("File does not exist");
 
 		/*could use fread()*/
-		while($line=fgets($myfile)){
+		while(! feof($myfile)){
 			//Convert to array by " " 
+			$line= fgets($myfile);
+			//echo $line;
 			$res = explode(" ", $line);
 			$new_res = [];
 			//Replace keys in $res
-			for($i = 0; $i<count($key_arr); $i++){
+			for($i = 0; $i < count($key_arr); $i++){
 				$new_res[$key_arr[$i]] = $res[$i];
+				//echo $res[$i];
 			}
 
 			$info_arr[$res[0]] = $new_res;

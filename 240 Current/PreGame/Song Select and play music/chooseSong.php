@@ -11,7 +11,6 @@
 	</style>
 	<body>
 		<fieldset>
-		<p> gameType <?php echo $_POST['gameType'];?></p>
 		<legend>Choose a Song</legend>
 		<!--
 		<input type="button" onClick="window.location='http://example.com?var=<?php echo $var ?>'">
