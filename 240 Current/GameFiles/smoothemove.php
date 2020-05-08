@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
-
+<audio src=../PreGame/MusicPic/<?php echo $song2;?> autoplay="true">
+<div style="border: 1px solid black ; padding: 1px ;">
+Sorry, your browser does not support the <audio> tag.
+</div>
+</audio>
 <head>
 	<link rel="stylesheet" type="text/css" href="gameBackground.css">
 	<link rel="stylesheet" type="text/css" href="fallingBlocks.css">

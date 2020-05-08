@@ -1,4 +1,7 @@
 <?php
+
+
+
 require_once '../misc/files.php';
 require_once '../misc/config.php';
 echo "<pre>";
@@ -28,6 +31,13 @@ function getsubscore($username){
 ?>
 <!DOCTYPE html>
 <html>
+
+<audio src=../PreGame/MusicPic/MenuSong.mp3 autoplay="true">
+<div style="border: 1px solid black ; padding: 1px ;">
+Sorry, your browser does not support the <audio> tag.
+</div>
+</audio>
+
 	<head>
 		<meta charset="UTF-8">
 		<title> Welcome to Music Math</title>
@@ -54,6 +64,7 @@ function getsubscore($username){
 	</body>
 </html>
 <?php
+
 	$all_user = get_user_info(USERFILE);
 	$namesandscores= array();
 	foreach($all_user as $key=>$item){
