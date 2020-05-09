@@ -7,11 +7,11 @@ echo "<pre>";
 /*foreach($_POST as $key => $val){
     echo "$key:$val\n";
 }*/
-
+echo("username " + $_SESSION['username']);
 extract($_POST);
 get_user_info(USERFILE);
-checkScore($username,$score);
-checkSubScore($username,$score)
+checkScore($username,$score);	
+checkSubScore($username,$score);
 
 //1: can login 2: user does not exist  3: invaild password
 
@@ -28,15 +28,14 @@ function checkScore($name, $score){
 			}
 		}
 	}
-	header("Location: menu.php/");
 }
 function updateScore($name, $score, $users){
-	$str="";
 	foreach($users as $key=>$item){
-		if($key==$name){
-			$item['userscore']=$score;
+		$str ="";
+		if($key['username']==$name){
+			$key['userscore']=$score;
 		}
-		$str.=$key." ".$item['password']." ".$item['class']." ".$item['userscore'].$item['subscore']." \n";
+		$str.=.$key." ".$item['password']." ".$item['class']." ".$item['userscore']." ".$item['subscore']."\n";
 	}
 	update_file(USERFILE,$str);
 }
@@ -53,7 +52,6 @@ function checkSubScore($name, $score){
 			}
 		}
 	}
-	header("Location: menu.php/");
 }
 function updateSubScore($name, $score, $users){
 	$str="";

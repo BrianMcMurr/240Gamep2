@@ -17,7 +17,7 @@ $re = checkLogin($username, $password);
 if($re===1){
 	/*Redirect browser*/
 	session_start(); 
-    $_SESSION['$username'] = $username;
+    $_SESSION['username'] = $username;
 	header("Location: ../Homepage/menu.php");
 
 }else{
@@ -31,7 +31,7 @@ if($re===1){
 /**
 *Returns 1: can login
 *		 2: user does not exist
-		 3: invaild password
+*		 3: invaild password
 	*/
 function checkLogin($name, $pw){
 

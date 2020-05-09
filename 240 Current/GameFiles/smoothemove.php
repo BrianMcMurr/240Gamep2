@@ -2,11 +2,14 @@
 <html>
 <!-- -->
 <head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="gameBackground.css">
 	<link rel="stylesheet" type="text/css" href="fallingBlocks.css?v=1">
 	<button id= "startGameButton" type="button" onclick="start(1000); makeSound('<?php echo $_POST['song']?>','<?php echo $_POST['gameType'] ?>');document.getElementById('startGameButton').remove();">Click me to start game</button>
 	<div id = "background" class="gameBackground"></div>
 </head>
+
+<p>username <?php echo $_SESSION['username'];?></p>
 <body>
 	<script src="randomEquation.js"></script>
 	<script type="text/javascript">
@@ -75,7 +78,18 @@
 		function stop(){
 			clearInterval(go);
 			document.getElementById("playingSong").pause();
+			updateHighScore(currentScore);
+			//update highscore with php 
 		}
+		function updateHighScore(newScore){
+			usern = "PlaceHolder";
+			jQuery.ajax({
+   				  type: "POST",
+   				  url: '../Misc/update_score.php',
+  				  dataType: 'json',
+   				  data: {username: "andrew", score: newScore /*send over user score too */},
+				});
+			}
 
 		//Shoot blocks with random equations in random collumns/files.
 		function blockCannon() {
@@ -178,27 +192,41 @@
 			num1 = parseInt(asArray[0]);
 			symbol = asArray[1];
 			num2 = parseInt(asArray[2]);
-			result;
 			if (symbol == "+"){//if addition, then solves as additon
 				result = num1 + num2;
-			} else {
-				result = num1 - num2;
-			}
 				if(result == parseInt(guess)) {//if user guess is correct then deletes the block and increments and updates score
 					elem = document.getElementById(block.id);
 					animationName = elem.getAttribute("style");
 					console.log("animation name: " + animationName);
-					elem.setAttribute("style", "background-color: orchid;"+ animationName);
-					elem.setAttribute("color", "orchid");//saves color attribute of block as green if correct
+					elem.setAttribute("style", "background-color: orchid;" + animationName);
+					elem.setAttribute("color", "orchid");//saves color attribute of block as orchid if correct
 					blockList.splice(iterator, 1); 
 					currentScore += 10;
 					updateScore();
 					return true;
 				}
-				else {
+				else{
 					return false;
 				}
 			}
+			if (symbol == "-"){
+				result = num1 - num2;
+				if(result == parseInt(guess)) {
+					elem = document.getElementById(block.id);
+					animationName = elem.getAttribute("style");
+					console.log("animation name: " + animationName);
+					elem.setAttribute("style", "background-color: orchid;" + animationName);
+					elem.setAttribute("color", "orchid");//saves color attribute of block as orchid if correct
+					blockList.splice(iterator, 1); 
+					currentScore += 10;
+					updateScore();
+					return true;
+				}
+				else{
+					return false;
+				}
+			}
+		}
 
 
 	</script>

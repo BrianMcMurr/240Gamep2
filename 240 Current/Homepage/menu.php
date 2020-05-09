@@ -28,6 +28,11 @@ function getsubscore($username){
 ?>
 <!DOCTYPE html>
 <html>
+<audio src=../PreGame/MusicPic/MenuSong.mp3 autoplay="true">
+<div style="border: 1px solid black ; padding: 1px ;">
+Sorry, your browser does not support the <audio> tag.
+</div>
+</audio>
 	<head>
 		<meta charset="UTF-8">
 		<title> Welcome to Music Math</title>
