@@ -5,66 +5,68 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="gameBackground.css">
 	<link rel="stylesheet" type="text/css" href="fallingBlocks.css?v=1">
-	<button id= "startGameButton" type="button" onclick="start(1000); makeSound('<?php echo $_POST['song']?>','<?php echo $_POST['gameType'] ?>');document.getElementById('startGameButton').remove();">Click me to start game</button>
+	<button id= "startGameButton" type="button" onclick="run('<?php echo $_POST['song']?>','<?php echo $_POST['gameType'] ?>');document.getElementById('startGameButton').remove();">Click me to start game</button>
 	<div id = "background" class="gameBackground"></div>
 </head>
 
-<p>username <?php echo $_SESSION['username'];?></p>
 <body>
+	<form action="../EndScreens/Victory Screen/VictoryScreen.html" id="win" method="post">
+	<form action="../EndScreens/LoseScreen/LScreen.html" id="lose" method="post">
+	<input type = "hidden" id = "endScore" name = "score" value="">
 	<script src="randomEquation.js"></script>
 	<script type="text/javascript">
+	var gameStyle;
 	   //var selectedSong = '<%= Session["selectedSong"] %>';// rate of block creation, lower = more blocks\
-		function makeSound(selectedSong, selectedGameType) {
+	   function run(selectedSong, selectedGameType) {
+			gameStyle = selectedGameType;
 			var sound = new Audio('../MusicPic/' + selectedSong + '.mp3');
+			//add event Listener for ended
+			sound.addEventListener("onended",stop());
 			switch(selectedSong) {
 				case("EverytimeWeTouch"):
-					//changeDiffuclty
+					blockInterval = 6000;
 					break;
 				case("HannahMontana"):
-					//changeDiffuclty
+					blockInterval = 5000;
 					break;
 				case("In_the_Jungle"):
-					//changeDiffuclty
+					blockInterval = 4000;
 					break;
 				case("Revenge"):
-					//changeDiffuclty
+					blockInterval = 3000;
 					break;
 				case("TNT"):
-					//changeDiffuclty
+					blockInterval = 2000;
 					break;
 				case("WhatMakesYouBeautiful"):
-					//changeDiffuclty
+					blockInterval = 1000;
 					break;
-				default:
+				default:	
 					alert("Song not Found");
 					break;
 			}
 
 			sound.id = "playingSong";
 			document.body.appendChild(sound);
+			//sound.addEventListener("ended",stop());
 			sound.play();
+			start(blockInterval);
 		}
-		/*
-		switch(selectedSong) {
-			case("shiningOnMyEx") : 
-			blockFrequency = 1000; 
-			//audio.addEventListener("ended", stop());
-			audio.play();
-			break;
-			default : blockFrequency = 3000; 
-			break;
-		}
-	*/
+
 		var go; //this variable will hold the interval for blockCannon. Initialized in start(gap).
-		var blockFrequency = 1000;
+		var blockInterval = 1000;
 		var counter = 0;
 		var blockList = new Array(); //whats 9 + 10?
 		var currentScore = 0;
 		var missedPoints = 0;
 		var maxMissedPoints = 100;
+		var iWon = 'win';
 	//	var listOfMissedEq = new Array();
-	//	start(blockFrequency);
+	//	start(blockInterval);
 		updateScore();
+		/*function getUsername(){
+			$.get()
+		}*/
 		function updateScore() {
 			document.getElementById("background").innerHTML = "Your current score is " + currentScore + "\n You've missed " + missedPoints + " points so far";
 		}
@@ -77,18 +79,19 @@
 		//stop shooting blocks every gap millis
 		function stop(){
 			clearInterval(go);
-			document.getElementById("playingSong").pause();
 			updateHighScore(currentScore);
+			document.getElementById('endScore').value = currentScore;
+			document.getElementById(iWon).submit();
 			//update highscore with php 
 		}
 		function updateHighScore(newScore){
-			usern = "PlaceHolder";
 			jQuery.ajax({
    				  type: "POST",
    				  url: '../Misc/update_score.php',
   				  dataType: 'json',
-   				  data: {username: "andrew", score: newScore /*send over user score too */},
+   				  data: {username: '<?php session_start(); echo $_SESSION['username'];?>', score: newScore, gameType: '<?php echo $_POST['gameType']?>'},
 				});
+				console.log("done");
 			}
 
 		//Shoot blocks with random equations in random collumns/files.
@@ -150,11 +153,11 @@
 		
 		function checkIfGameFinish() {// checks if the user has missed the maximum amount of points,if so ends the game and gives score card as alert
 			if(missedPoints == maxMissedPoints) {
+				iWon = 'lose';
 				for (i = 0; i < blockList.length; i++) {
 					document.getElementById(blockList[i].id).remove();
 				}
 				stop();//stops the game 
-				alert("sorry, You lose! \nYour Score is " + currentScore);//score card of player stats
 			}
 		}
 		function explosion() {
@@ -187,6 +190,7 @@
 
 			} 
 		}
+
 		function getAnswer(block, iterator) {//checks if user input is equal to the chosen blocks equation value, if so then removes block from screen and blockList Array
 			asArray = block.equation.split(" ");//splits and solves the equation stored within the block equation
 			num1 = parseInt(asArray[0]);
@@ -194,24 +198,10 @@
 			num2 = parseInt(asArray[2]);
 			if (symbol == "+"){//if addition, then solves as additon
 				result = num1 + num2;
-				if(result == parseInt(guess)) {//if user guess is correct then deletes the block and increments and updates score
-					elem = document.getElementById(block.id);
-					animationName = elem.getAttribute("style");
-					console.log("animation name: " + animationName);
-					elem.setAttribute("style", "background-color: orchid;" + animationName);
-					elem.setAttribute("color", "orchid");//saves color attribute of block as orchid if correct
-					blockList.splice(iterator, 1); 
-					currentScore += 10;
-					updateScore();
-					return true;
-				}
-				else{
-					return false;
-				}
-			}
-			if (symbol == "-"){
+			} else {
 				result = num1 - num2;
-				if(result == parseInt(guess)) {
+			}
+			if(result == parseInt(guess)) {//if user guess is correct then deletes the block and increments and updates score
 					elem = document.getElementById(block.id);
 					animationName = elem.getAttribute("style");
 					console.log("animation name: " + animationName);
@@ -226,7 +216,6 @@
 					return false;
 				}
 			}
-		}
 
 
 	</script>

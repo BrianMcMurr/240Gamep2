@@ -4,7 +4,7 @@ require_once '../misc/config.php';
 echo "<pre>";
 extract($_POST);
 session_start(); 
-$username = $_SESSION['$username'];
+$username = $_SESSION['username'];
 echo "<div style ='font:27px/21px Arial,tahoma,sans-serif;color:#ff00ff'> WELCOME $username </div>";
 echo "<div style ='font:23px/21px Arial,tahoma,sans-serif;color:#000080'> your highscore for addition is ".gethighscore($username)."</div>";
 echo "<div style ='font:23px/21px Arial,tahoma,sans-serif;color:#000080'> your highscore for subtraction is ".getsubscore($username)."</div>";

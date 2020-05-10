@@ -16,16 +16,16 @@
 				<legend>Please Pick A Game Mode</legend>
 				
 				<!-- change runner.php to actaulyl redierct page -->
-					<form action="../../Song Select and play music/chooseSong.php" id="gameTypeSelect" method = "post">
-					<input type="hidden" id="gameValue" name="gameType" value="">
-					<img onclick="setGameType('addition')" id="add" alt="sub" src="add.png" height = 200 width = 200>
-					<img type="image" onclick="setGameType('subtraction')" id="sub" alt="sub" src="sub.png" height = 200 width = 200>
-					</form>	
+					<form action="../../Song Select and play music/chooseSong.php" id="submitForm" method = "post">
+						<input type="hidden" id="gameValue"value="">
+						<img onclick="setGameType('addition')" id="add" alt="sub" src="add.png" height = 200 width = 200>
+						<img onclick="setGameType('subtraction')" id="sub" alt="sub" src="sub.png" height = 200 width = 200>
+					</form>
 				</fieldset>
 				<script>
 					function setGameType(gameType) {
 						document.getElementById('gameValue').value = gameType;
-						document.getElementById('gameTypeSelect').submit();
+						document.getElementById('submitForm').submit();
 					}
 				</script>
 	</body>
