@@ -11,7 +11,7 @@
 						}    
 				</style>
 				
-	<img src="mario.png" alt="mario">
+	<img src="mario.png" alt="mario" height="200" width="300">
 	
 		
 	<?php 
@@ -21,13 +21,13 @@
 	?>
 	<! implement php code round score -->
 			
-	<legend>Your Score: </legend>
+	<legend>Your Score: <?php echo $_POST['score'];?></legend>
 	<! ^implement saved php variabel from above after : -->
 	
 	
-	<a href="homepage.html">
+	<a href="/../Homepage/Updated HomePage/homepage.html">
 	<input type="image" id="tryagain" alt="tryagain" src="tryagain.png"  style="float: left; width: 15%; margin-right: 1%; margin-bottom: 5m;"
-	height="50" width="100">
+	height="50" width="700">
 	
 	
 	<?php 

@@ -11,28 +11,19 @@
 				}    
 		</style>
 
-		<img src="victory.png" alt="victory">
+		<img src="victory.png" alt="victory" height="200" width="210">
 		
 		<?php 
 		session_start();
-		//whatever php name is saved as 
-		//^save as variable 
 		?>
 		
-		<legend>Your Score: </legend>
+		<p>Your Score: <?php echo $_POST['score'];?></p>
 		<! ^implement saved php variabel from above after : -->
 		
-		<a href="homepage.html">
+		<a href="../../Homepage/Updated HomePage/homepage.html">
 		<input type="image" id="return" alt="return" src="return home.png"  style="float: left; width: 15%; margin-right: 1%; margin-bottom: 5m;"
-		height="120" width="200">
-		
-		
-		
-		<?php 
-		session_start();
-		//whatever php name is saved as 
-		//^save as variable 
-		?>
+		height="100" width="400">
+
 		<! implement php code for missed questions -->
 		
 	</body>

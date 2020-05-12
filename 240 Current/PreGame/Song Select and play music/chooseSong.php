@@ -12,14 +12,10 @@
 	<body>
 		<fieldset>
 		<legend>Choose a Song</legend>
-		<!--
-		<input type="button" onClick="window.location='http://example.com?var=<?php echo $var ?>'">
-			
-		<a href="page.php?value_key=some_value">Link</a>-->
 			<script>
 				//console.log(document.getElementById('gameType').value);
 			</script>
-<p><?php echo $_POST['gameType'] ?></p>
+<p><?php echo $_POST['gameType']; ?></p>
 			<form action="../../GameFiles/smoothemove.php" id="songSelect" method="post">
 				
 				<p><?php 

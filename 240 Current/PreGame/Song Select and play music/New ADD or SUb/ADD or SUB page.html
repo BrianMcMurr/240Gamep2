@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<?php
+$username=null;
+session_start(); 
+$username = $_SESSION['username'];
+if($username==null){
+	header("Location: ../Login/Login.php");
+}
+?>
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -17,14 +25,15 @@
 				
 				<!-- change runner.php to actaulyl redierct page -->
 					<form action="../../Song Select and play music/chooseSong.php" id="submitForm" method = "post">
-						<input type="hidden" id="gameValue"value="">
+						<input type="hidden" id="gameType" name ="gameType" value="">
 						<img onclick="setGameType('addition')" id="add" alt="sub" src="add.png" height = 200 width = 200>
 						<img onclick="setGameType('subtraction')" id="sub" alt="sub" src="sub.png" height = 200 width = 200>
 					</form>
 				</fieldset>
 				<script>
 					function setGameType(gameType) {
-						document.getElementById('gameValue').value = gameType;
+						document.getElementById('gameType').value = gameType;
+						console.log(document.getElementById('gameType').value);
 						document.getElementById('submitForm').submit();
 					}
 				</script>

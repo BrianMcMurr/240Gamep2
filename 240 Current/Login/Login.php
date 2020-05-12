@@ -1,6 +1,17 @@
 
 <!DOCTYPE html>
 <html>
+<audio id="myAudio">
+  <source src="../PreGame/MusicPic/MenuSong.mp3" type="audio/mp3">
+  Your browser does not support the audio element.
+</audio>
+
+<script>
+var x = document.getElementById("myAudio"); 
+
+  x.play(); 
+
+</script>
 <head>
 <body>
 	<form action="check_login.php" method="post" id="form_id">

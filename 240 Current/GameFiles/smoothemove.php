@@ -1,27 +1,40 @@
 <!DOCTYPE html>
+<!--setInterval(stop(), 60000));
+
+-->
 <html>
-<!-- -->
 <head>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="gameBackground.css">
 	<link rel="stylesheet" type="text/css" href="fallingBlocks.css?v=1">
-	<button id= "startGameButton" type="button" onclick="run('<?php echo $_POST['song']?>','<?php echo $_POST['gameType'] ?>');document.getElementById('startGameButton').remove();">Click me to start game</button>
+	<button type = "button" id= "startGameButton" onclick="setTimeout(stop,6000); run('<?php echo $_POST['song']?>','<?php echo $_POST['gameType'] ?>');document.getElementById('startGameButton').remove();">Click me to start game</button>
 	<div id = "background" class="gameBackground"></div>
 </head>
 
 <body>
-	<form action="../EndScreens/Victory Screen/VictoryScreen.html" id="win" method="post">
-	<form action="../EndScreens/LoseScreen/LScreen.html" id="lose" method="post">
-	<input type = "hidden" id = "endScore" name = "score" value="">
+	<form action="../EndScreens/Victory Screen/VictoryScreen.php" id="win" method="post">
+	<form action="../EndScreens/LoseScreen/LScreen.php" id="lose" method="post">
+	<input type = "hidden" id = "endScore" name = "score" value=""></form></form>
 	<script src="randomEquation.js"></script>
 	<script type="text/javascript">
-	var gameStyle;
+	//trigger when getCurrTime = 60000
+		
+		//var d = new Date();
+		//var startTime = d.getMilliseconds();
+		var gameStyle;
+		var go; //this variable will hold the interval for blockCannon. Initialized in start(gap).
+		var blockInterval = 1000;
+		var counter = 0;
+		var blockList = new Array(); //whats 9 + 10?
+		var currentScore = 0;
+		var missedPoints = 0;
+		var maxMissedPoints = 100;
+		var iWon = 'win';
 	   //var selectedSong = '<%= Session["selectedSong"] %>';// rate of block creation, lower = more blocks\
 	   function run(selectedSong, selectedGameType) {
 			gameStyle = selectedGameType;
 			var sound = new Audio('../MusicPic/' + selectedSong + '.mp3');
 			//add event Listener for ended
-			sound.addEventListener("onended",stop());
 			switch(selectedSong) {
 				case("EverytimeWeTouch"):
 					blockInterval = 6000;
@@ -48,36 +61,16 @@
 
 			sound.id = "playingSong";
 			document.body.appendChild(sound);
-			//sound.addEventListener("ended",stop());
 			sound.play();
-			start(blockInterval);
-		}
-
-		var go; //this variable will hold the interval for blockCannon. Initialized in start(gap).
-		var blockInterval = 1000;
-		var counter = 0;
-		var blockList = new Array(); //whats 9 + 10?
-		var currentScore = 0;
-		var missedPoints = 0;
-		var maxMissedPoints = 100;
-		var iWon = 'win';
-	//	var listOfMissedEq = new Array();
-	//	start(blockInterval);
-		updateScore();
-		/*function getUsername(){
-			$.get()
-		}*/
+			go = setInterval(blockCannon, blockInterval);
+			updateScore();
+	   }
 		function updateScore() {
 			document.getElementById("background").innerHTML = "Your current score is " + currentScore + "\n You've missed " + missedPoints + " points so far";
 		}
-		//start shooting blocks every gap millis
-		function start(gap){
-			//The function setInterval calls the method blockCannon every gap milliseconds
-			go = setInterval(blockCannon, gap);
-		}
-
-		//stop shooting blocks every gap millis
+		
 		function stop(){
+			//if(stopVal != 0){
 			clearInterval(go);
 			updateHighScore(currentScore);
 			document.getElementById('endScore').value = currentScore;
@@ -96,6 +89,11 @@
 
 		//Shoot blocks with random equations in random collumns/files.
 		function blockCannon() {
+			/*newD = new Date();
+			if((newD.getMilliseconds() - startTime) > 5600){
+				iWon = "win";
+				stop();
+			}*/
 			++counter;
 			var currentBlockId = "block" + counter;
 			/*

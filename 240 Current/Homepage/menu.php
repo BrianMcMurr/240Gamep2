@@ -3,8 +3,12 @@ require_once '../misc/files.php';
 require_once '../misc/config.php';
 echo "<pre>";
 extract($_POST);
+$username=null;
 session_start(); 
 $username = $_SESSION['username'];
+if($username==null){
+	header("Location: ../Login/Login.php");
+}
 echo "<div style ='font:27px/21px Arial,tahoma,sans-serif;color:#ff00ff'> WELCOME $username </div>";
 echo "<div style ='font:23px/21px Arial,tahoma,sans-serif;color:#000080'> your highscore for addition is ".gethighscore($username)."</div>";
 echo "<div style ='font:23px/21px Arial,tahoma,sans-serif;color:#000080'> your highscore for subtraction is ".getsubscore($username)."</div>";
