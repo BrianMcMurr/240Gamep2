@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <audio id="myAudio">
-  <source src="../PreGame/MusicPic/MenuSong.mp3" type="audio/mp3">
+  <source src="MenuSong.mp3" type="audio/mp3">
   Your browser does not support the audio element.
 </audio>
 
