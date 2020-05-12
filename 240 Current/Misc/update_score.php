@@ -8,8 +8,19 @@ echo "<pre>";
     echo "$key:$val\n";
 }*/
 //echo("username " + $_SESSION['username']);
-extract($_POST);
-if(gameType="addition"){
+//$postVar = json_decode($_POST);
+session_start();
+$username = $_SESSION['username'];
+//$entityBody = file_get_contents('php://input');
+//error_log("entity: ". $entityBody);
+$postVar = json_decode(file_get_contents('php://input'));
+//error_log("postVar: ". $postVar);
+$score = $postVar->score;
+$gameType = $postVar->gameType;
+error_log("score: ". $score . " username: ". $username);
+/*session_start();
+$username = $_SESSION['username'];*/
+if($gameType="addition"){
 checkScore($username,$score);	
 }
 else{
@@ -18,7 +29,6 @@ checkSubScore($username,$score);
 //1: can login 2: user does not exist  3: invaild password
 
 function checkScore($name, $score){
-	$str ="test";
 	$all_user = get_user_info(USERFILE);
 	//print_r($all_user);
 	foreach($all_user as $key=>$item){

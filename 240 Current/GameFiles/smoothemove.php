@@ -7,7 +7,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="gameBackground.css">
 	<link rel="stylesheet" type="text/css" href="fallingBlocks.css?v=1">
-	<button type = "button" id= "startGameButton" onclick="setTimeout(stop,60000); run('<?php echo $_POST['song']?>','<?php echo $_POST['gameType'] ?>');document.getElementById('startGameButton').remove();">Click me to start game</button>
+	<button type = "button" id= "startGameButton" onclick="run('<?php echo $_POST['song']?>','<?php echo $_POST['gameType'] ?>');document.getElementById('startGameButton').remove();">Click me to start game</button>
 	<div id = "background" class="gameBackground"></div>
 </head>
 
@@ -63,6 +63,7 @@
 			sound.id = "playingSong";
 			document.body.appendChild(sound);
 			sound.play();
+			sound.addEventListener('ended',stop);
 			go = setInterval(blockCannon, blockInterval);
 			updateScore();
 	   }
@@ -80,11 +81,14 @@
 			//update highscore with php 
 		}
 		function updateHighScore(newScore){
+			var args = {
+				score: newScore,
+				gameType: "<?php echo $_POST['gameType']?>"
+			}
 			jQuery.ajax({
    				  type: "POST",
    				  url: '../Misc/update_score.php',
-  				  dataType: 'json',
-   				  data: {username: '<?php session_start(); echo $_SESSION['username'];?>', score: newScore, gameType: '<?php echo $_POST['gameType']?>'},
+   				  data: JSON.stringify(args)
 				});
 				console.log("done");
 			}
