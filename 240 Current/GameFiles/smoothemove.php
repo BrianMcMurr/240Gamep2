@@ -7,14 +7,15 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="gameBackground.css">
 	<link rel="stylesheet" type="text/css" href="fallingBlocks.css?v=1">
-	<button type = "button" id= "startGameButton" onclick="setTimeout(stop,6000); run('<?php echo $_POST['song']?>','<?php echo $_POST['gameType'] ?>');document.getElementById('startGameButton').remove();">Click me to start game</button>
+	<button type = "button" id= "startGameButton" onclick="setTimeout(stop,60000); run('<?php echo $_POST['song']?>','<?php echo $_POST['gameType'] ?>');document.getElementById('startGameButton').remove();">Click me to start game</button>
 	<div id = "background" class="gameBackground"></div>
 </head>
 
 <body>
 	<form action="../EndScreens/Victory Screen/VictoryScreen.php" id="win" method="post">
+	<input type="hidden" id = "winScore" name = "score" value=""></form>
 	<form action="../EndScreens/LoseScreen/LScreen.php" id="lose" method="post">
-	<input type = "hidden" id = "endScore" name = "score" value=""></form></form>
+	<input type = "hidden" id = "loseScore" name = "score" value=""></form>
 	<script src="randomEquation.js"></script>
 	<script type="text/javascript">
 	//trigger when getCurrTime = 60000
@@ -73,7 +74,8 @@
 			//if(stopVal != 0){
 			clearInterval(go);
 			updateHighScore(currentScore);
-			document.getElementById('endScore').value = currentScore;
+			document.getElementById('loseScore').value = currentScore;
+			document.getElementById('winScore').value = currentScore;
 			document.getElementById(iWon).submit();
 			//update highscore with php 
 		}
