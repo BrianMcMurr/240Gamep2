@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 $username=null;
 session_start(); 
@@ -7,6 +6,7 @@ if($username==null){
 	header("Location: ../Login/Login.php");
 }
 ?>
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">

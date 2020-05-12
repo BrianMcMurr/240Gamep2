@@ -53,7 +53,7 @@ Sorry, your browser does not support the <audio> tag.
 		
 		<!-- change runner.php to actaulyl redierct page -->
 			
-			<a href="../PreGame/Song Select and play music/New ADD or SUb/ADD or SUB page.html">
+			<a href="../PreGame/Song Select and play music/New ADD or SUb/ADD or SUB page.php">
 			<input type="image" id="sart" alt="start" src="Start.png" height="120" width="160">
 			</a>
 			
