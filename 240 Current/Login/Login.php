@@ -1,10 +1,6 @@
 
 <!DOCTYPE html>
 <html>
-<!--<audio id="myAudio">
-  <source src="MenuSong.mp3" type="audio/mp3" loop="true">
-  Your browser does not support the audio element.
-</audio>-->
 <button id ="secretButton"onclick="playMusic();">Play Menu Music</button>
 <script>	
 function playMusic() {
