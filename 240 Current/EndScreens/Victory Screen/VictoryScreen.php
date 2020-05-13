@@ -15,7 +15,7 @@
 		<p>Your Score: <?php echo $_POST['score'];?></p>
 		<! ^implement saved php variabel from above after : -->
 		
-		<a href="../Homepage/menu.php">
+		<a href="../../Homepage/menu.php">
 		<input type="image" id="return" alt="return" src="return home.png"  style="float: left; width: 15%; margin-right: 1%; margin-bottom: 5m;"
 		height="100" width="400">
 		<! img button allows for redirect back to homepage screen -->
