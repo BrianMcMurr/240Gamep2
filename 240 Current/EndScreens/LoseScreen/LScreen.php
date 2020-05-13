@@ -12,12 +12,14 @@
 				</style>
 				
 	<img src="mario.png" alt="mario" height="400" width="600">
+	<! top image before score -->
 			
 	<legend>Your Score: <?php echo $_POST['score'];?></legend>
-	
-	<a href="../../Homepage/menu.php">
+	<! displays score of current round before lost -->
+	<a href="../Homepage/menu.php">
 	<input type="image" id="tryagain" alt="tryagain" src="tryagain.png"  style="float: left; width: 15%; margin-right: 1%; margin-bottom: 5m;"
 	height="50" width="700">
+	<! img button allows for redirect back to homepage screen -->
 	
 	
 	</body>

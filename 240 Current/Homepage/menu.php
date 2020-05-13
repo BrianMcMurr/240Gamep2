@@ -3,6 +3,7 @@ require_once '../misc/files.php';
 require_once '../misc/config.php';
 echo "<pre>";
 extract($_POST);
+//checks to see if user has a username if they dont redirects to login
 $username=null;
 session_start(); 
 $username = $_SESSION['username'];
@@ -12,7 +13,7 @@ if($username==null){
 echo "<div style ='font:27px/21px Arial,tahoma,sans-serif;color:#ff00ff'> WELCOME $username </div>";
 echo "<div style ='font:23px/21px Arial,tahoma,sans-serif;color:#000080'> your highscore for addition is ".gethighscore($username)."</div>";
 echo "<div style ='font:23px/21px Arial,tahoma,sans-serif;color:#000080'> your highscore for subtraction is ".getsubscore($username)."</div>";
-
+//gets user highscore
 function gethighscore($username){
 	$all_user = get_user_info(USERFILE);
 	foreach($all_user as $key=>$item){
@@ -21,6 +22,7 @@ function gethighscore($username){
 		}
 	}
 }
+//gets user highscore for subtraction
 function getsubscore($username){
 	$all_user = get_user_info(USERFILE);
 	foreach($all_user as $key=>$item){
@@ -53,32 +55,31 @@ Sorry, your browser does not support the <audio> tag.
 		
 		<!-- change runner.php to actaulyl redierct page -->
 			
-			<a href="../PreGame/Song Select and play music/New ADD or SUb/ADD or SUB page.php">
-			<input type="image" id="sart" alt="start" src="Start.png" height="120" width="160">
-			</a>
-			
-			<a href="../../Login/Login.php">
-			<input type="image" id="logout" alt="logout" src="quit.png" height="100" width="150">	
-			</a>
+			<a href="../PreGame/Song Select and play music/New ADD or SUb/ADD or SUB page.php" style="text-decoration: none"><img id="sart" alt="start" src="Start.png" height="120" width="160"></a><br/>
+			<a href="../Login/Login.php" style= "text-decoration: none"><img id="logout" alt="logout" src="quit.png" height="120" width="160" ></a>
 		</fieldset>
 	</body>
 </html>
 <?php
+// creates array with users and their scores
 	$all_user = get_user_info(USERFILE);
 	$namesandscores= array();
 	foreach($all_user as $key=>$item){
 		$namesandscores[$key]=$item['userscore'];
 
 	}
+	//sorts by score
 	arsort($namesandscores);
 	echo "<div style ='font:31px/21px Arial,tahoma,sans-serif;color:#000080'> High scores for addition</div>";
 	$counter=0;
+	//prints top 5 score
 	foreach ($namesandscores as $key => $val) {
 		if($counter<5){
     		echo "$key = $val\n\n";
     		$counter++;
     	}
-	}		
+	}
+	//same as above but for negative
 	$namesandsubscores= array();
 	foreach($all_user as $key=>$item){
 		$namesandsubscores[$key]=$item['subscore'];

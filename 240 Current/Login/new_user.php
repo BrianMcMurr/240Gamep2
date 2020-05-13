@@ -6,16 +6,19 @@
 
 	extract($_POST);
 	$repeat=false;
-	//print_r($all_user);
 	$myfile = fopen(USERFILE, "r") or die("File does not exist");
 	$all_user = get_user_info(USERFILE);
-	//print_r($all_user);
+	//checks if any input is blank if it is creation fails
+	if($username=="" || $password=="" || $class==""){
+		header('Location: '.repeatuser.'.'.php);
+	}
+	// checks to see if the username is taken
 	foreach($all_user as $key=>$item){
 		if ($key==$username){
 			$repeat=true;
 		}
 	}
-	/*could use fread()*/
+	//if username is orginal add it to user system
 	if(!$repeat){
 		$str="";
 	while($line=fgets($myfile)){
@@ -29,6 +32,7 @@
 	update_file(USERFILE,$str);
 	header('Location: '.accountcreated.'.'.php);
 	}
+	// directs to account creation failiure 
 	if($repeat){
 	header('Location: '.repeatuser.'.'.php);
 }

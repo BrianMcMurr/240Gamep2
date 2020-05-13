@@ -1,4 +1,4 @@
 enc $2y$10$uxQ.ytr13OAGAzG34uVjWuHicgnNnCXPTkl5hrxNKt87MrZretqfG class 0 0
 Brian $2y$10$CsgxReCmN3zESj3XhyRqNeHdTrdQUtNOxHw9Djxn2qmm8796BhCDal class 0 0
 andrew $2y$10$eCXRRP.9qjj2/Tm82jL5mu7spUJhqa6bj.BpkMZqxvO4M2V3M/CKO 240 100 0
-logan $2y$10$22vuDmir7kPcEg5o.5PZr.M.T6Hm759WPhg.Tqzo54OythYhBLsdu 240 0 0
+logan $2y$10$22vuDmir7kPcEg5o.5PZr.M.T6Hm759WPhg.Tqzo54OythYhBLsdu 240 0 0  

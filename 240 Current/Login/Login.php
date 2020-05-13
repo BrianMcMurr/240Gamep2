@@ -1,16 +1,22 @@
 
 <!DOCTYPE html>
 <html>
-<audio id="myAudio">
-  <source src="../MusicPic/MenuSong.mp3" type="audio/mp3">
+<!--<audio id="myAudio">
+  <source src="MenuSong.mp3" type="audio/mp3" loop="true">
   Your browser does not support the audio element.
-</audio>
-
-<script>
-var x = document.getElementById("myAudio"); 
-
-  x.play(); 
-
+</audio>-->
+<button id ="secretButton"onclick="playMusic();">Play Menu Music</button>
+<script>	
+function playMusic() {
+	secretButton = document.getElementById("secretButton");
+	secretButton.remove();
+	myAudio = document.createElement("AUDIO");
+	myAudio.src = "MenuSong.mp3";
+	myAudio.loop = true;
+	myAudio.id = "myAudio";
+	document.body.appendChild(myAudio);
+	myAudio.play();
+}
 </script>
 <head>
 <body>
